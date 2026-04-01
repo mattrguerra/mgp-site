@@ -1,0 +1,60 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+
+// Placeholder data
+const categories = ['All', 'Menu', 'Product', 'Portrait', 'Event'];
+const projects = [
+  { title: 'PCT Menu Photography', slug: 'pct-menu', category: 'Menu', client: 'PCT Restaurant' },
+  { title: 'Product Line Launch', slug: 'product-launch', category: 'Product', client: 'Client Name' },
+  { title: 'Corporate Headshots', slug: 'corporate-headshots', category: 'Portrait', client: 'Client Name' },
+  { title: 'Grand Opening Event', slug: 'grand-opening', category: 'Event', client: 'Client Name' },
+  { title: 'Seasonal Menu Update', slug: 'seasonal-menu', category: 'Menu', client: 'Client Name' },
+  { title: 'Brand Product Shots', slug: 'brand-products', category: 'Product', client: 'Client Name' },
+];
+---
+
+<BaseLayout
+  title="Work"
+  description="Commercial photography portfolio. Menu photography, product shoots, portraits, and events in Houston, Texas."
+>
+  <section class="section-padding">
+    <div class="container-wide">
+      <div class="mb-12 lg:mb-16">
+        <p class="label text-copper mb-3">Portfolio</p>
+        <h1 class="heading-1">Work</h1>
+        <p class="body-large text-warm-gray mt-4 max-w-xl">
+          A selection of commercial photography projects. Each one built with intention.
+        </p>
+      </div>
+
+      <!-- Category Filter (static for now, React component later) -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        {categories.map((cat, i) => (
+          <button
+            class:list={[
+              'font-mono text-xs uppercase tracking-[0.15em] px-4 py-2 transition-colors',
+              i === 0
+                ? 'bg-obsidian text-bone'
+                : 'text-warm-gray hover:text-obsidian border border-warm-gray/20 hover:border-obsidian/30',
+            ]}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            slug={project.slug}
+            category={project.category}
+            client={project.client}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

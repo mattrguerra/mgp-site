@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogCard from '@/components/BlogCard.astro';
+
+// Placeholder data
+const posts = [
+  {
+    title: 'Why Menu Photography Is Worth the Investment',
+    slug: 'menu-photography-investment',
+    excerpt: 'Your menu is your most powerful sales tool. Here is why professional photography pays for itself.',
+    date: '2026-03-15',
+    category: 'Business',
+    readingTime: 5,
+  },
+  {
+    title: 'Behind the Shoot: PCT Restaurant',
+    slug: 'behind-pct-restaurant',
+    excerpt: 'A look at how we photographed 60+ menu items in a single session.',
+    date: '2026-03-01',
+    category: 'Behind the Scenes',
+    readingTime: 4,
+  },
+  {
+    title: '5 Things to Prepare Before Your Product Shoot',
+    slug: 'prepare-product-shoot',
+    excerpt: 'Get the most out of your session with these pre-shoot preparation tips.',
+    date: '2026-02-15',
+    category: 'Tips',
+    readingTime: 3,
+  },
+];
+---
+
+<BaseLayout
+  title="Blog"
+  description="Photography tips, behind-the-scenes looks, and business insights from a Houston commercial photographer."
+>
+  <section class="section-padding">
+    <div class="container-wide">
+      <div class="mb-12 lg:mb-16">
+        <p class="label text-copper mb-3">Blog</p>
+        <h1 class="heading-1">Thoughts & Process</h1>
+        <p class="body-large text-warm-gray mt-4 max-w-xl">
+          Behind-the-scenes looks, photography tips, and honest takes on the business of commercial photography.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.title}
+            slug={post.slug}
+            excerpt={post.excerpt}
+            date={post.date}
+            category={post.category}
+            readingTime={post.readingTime}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

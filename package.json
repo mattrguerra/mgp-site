@@ -1,0 +1,32 @@
+{
+  "name": "mgp-site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5.0.2",
+    "@astrojs/sitemap": "^3.7.2",
+    "@sanity/cli": "^3.0.0",
+    "@sanity/client": "^7.20.0",
+    "@sanity/image-url": "^2.1.1",
+    "astro": "^6.1.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "sanity": "^5.14.1",
+    "styled-components": "^6.3.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.0"
+  },
+  "overrides": {
+    "vite": "^7"
+  }
+}

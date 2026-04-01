@@ -1,0 +1,104 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+
+// Placeholder data until Sanity is connected
+const featuredProjects = [
+  { title: 'PCT Menu Photography', slug: 'pct-menu', category: 'Menu', client: 'PCT Restaurant' },
+  { title: 'Product Line Launch', slug: 'product-launch', category: 'Product', client: 'Client Name' },
+  { title: 'Corporate Headshots', slug: 'corporate-headshots', category: 'Portrait', client: 'Client Name' },
+  { title: 'Grand Opening Event', slug: 'grand-opening', category: 'Event', client: 'Client Name' },
+];
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="relative min-h-[85vh] flex items-center bg-obsidian overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/80 to-transparent z-10"></div>
+    <!-- Placeholder for hero image -->
+    <div class="absolute inset-0 bg-obsidian"></div>
+    <div class="container-wide relative z-20">
+      <div class="max-w-2xl">
+        <p class="label text-copper mb-6">Commercial Photography / Houston, TX</p>
+        <h1 class="heading-1 text-bone mb-6">
+          Images that work<br />
+          <span class="text-copper">as hard as you do.</span>
+        </h1>
+        <p class="body-large text-bone/70 mb-10 max-w-lg">
+          Menu photography, product shoots, portraits, and events.
+          Clean, intentional imagery built for commercial use.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/work" class="btn-primary bg-copper hover:bg-copper/90">View Work</a>
+          <a href="/contact" class="btn-secondary border-bone/30 text-bone hover:bg-bone/10 hover:border-bone/50">Book a Session</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section class="section-padding">
+    <div class="container-wide">
+      <div class="flex items-end justify-between mb-12">
+        <SectionHeading
+          label="Selected Work"
+          title="Recent projects"
+        />
+        <a href="/work" class="hidden md:inline-flex items-center gap-2 font-body text-sm text-slate hover:text-obsidian group">
+          View all
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {featuredProjects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            slug={project.slug}
+            category={project.category}
+            client={project.client}
+          />
+        ))}
+      </div>
+      <div class="mt-12 text-center md:hidden">
+        <a href="/work" class="btn-secondary">View All Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="section-padding bg-obsidian">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <p class="label text-copper mb-4">About</p>
+          <h2 class="heading-2 text-bone mb-6">Built different.</h2>
+          <p class="body-large text-bone/70 mb-8">
+            I'm Matt Guerra -- a Houston-based photographer who brings the same precision to a menu shoot that I bring to everything I do. Every image is intentional. Every detail matters. No filler, no fluff, just work that performs.
+          </p>
+          <a href="/about" class="btn-secondary border-bone/30 text-bone hover:bg-bone/10 hover:border-bone/50">
+            More about me
+          </a>
+        </div>
+        <div class="aspect-[4/5] bg-slate/20">
+          <!-- Placeholder for about image -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding">
+    <div class="container-narrow text-center">
+      <p class="label text-copper mb-4">Ready to start?</p>
+      <h2 class="heading-2 mb-6">Let's make something worth looking at.</h2>
+      <p class="body-large text-warm-gray mb-10 max-w-lg mx-auto">
+        Whether it's a full menu reshoot or a one-day product session,
+        I'll bring the same level of craft to your project.
+      </p>
+      <a href="/contact" class="btn-primary">Book a Session</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+// Required for static builds — Sanity will replace this
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'why-menu-photography-is-worth-the-investment' } },
+    { params: { slug: 'preparing-for-your-commercial-shoot' } },
+    { params: { slug: 'houston-food-photography-guide' } },
+  ];
+}
+
+// Placeholder
+const post = {
+  title: 'Why Menu Photography Is Worth the Investment',
+  excerpt: 'Your menu is your most powerful sales tool. Here is why professional photography pays for itself.',
+  date: '2026-03-15',
+  category: 'Business',
+  readingTime: 5,
+};
+
+const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={post.title} description={post.excerpt}>
+  <article class="section-padding">
+    <div class="container-narrow">
+      <a href="/blog" class="inline-flex items-center gap-2 font-body text-sm text-warm-gray hover:text-obsidian mb-8 group">
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to Blog
+      </a>
+
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="label">{post.category}</span>
+          <span class="label">{formattedDate}</span>
+          <span class="label">{post.readingTime} min read</span>
+        </div>
+        <h1 class="heading-1 mb-4">{post.title}</h1>
+        <p class="body-large text-warm-gray">{post.excerpt}</p>
+      </header>
+
+      <!-- Cover image placeholder -->
+      <div class="aspect-[16/9] bg-warm-gray/10 mb-12"></div>
+
+      <!-- Article body placeholder -->
+      <div class="prose prose-slate max-w-none">
+        <p class="font-body text-base leading-relaxed text-slate">
+          This is placeholder content. When Sanity is connected, this will render the full blog post using Portable Text. Each post will have rich formatting, inline images, and proper semantic HTML for SEO.
+        </p>
+        <p class="font-body text-base leading-relaxed text-slate mt-6">
+          The blog exists to drive organic search traffic to your site. Posts targeting keywords like "Houston food photography," "restaurant menu photography tips," and "how much does product photography cost" will help potential clients find you through Google.
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

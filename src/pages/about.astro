@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Matt Guerra is a commercial photographer based in Houston, Texas, specializing in menu, product, portrait, and event photography."
+>
+  <section class="section-padding">
+    <div class="container-wide">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <!-- Image -->
+        <div class="aspect-[3/4] bg-warm-gray/10 lg:sticky lg:top-24">
+          <!-- Headshot placeholder -->
+          <div class="w-full h-full flex items-center justify-center">
+            <span class="label">Headshot</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <p class="label text-copper mb-3">About</p>
+          <h1 class="heading-1 mb-8">Matt Guerra</h1>
+
+          <div class="space-y-6 font-body text-base leading-relaxed text-slate">
+            <p>
+              I'm a commercial photographer based in Houston, Texas. I work with restaurants, brands, and businesses that need images built for purpose -- not decoration.
+            </p>
+            <p>
+              My approach is straightforward: show up prepared, execute with precision, and deliver work that performs. Whether it's a full menu reshoot or a single product line, every image gets the same level of attention. Clean composition, intentional lighting, and edits that serve the final use case.
+            </p>
+            <p>
+              Before photography, I built a career across graphic design, multimedia art, and development. That cross-discipline background shows up in how I approach every shoot -- I think about how an image will be used, where it'll live, and what it needs to communicate. I'm not just capturing a photo; I'm building an asset.
+            </p>
+            <p>
+              When I'm not behind the camera, I'm usually deep in a creative or technical project -- writing code, experimenting with new tools, or advocating for mental health awareness. I believe good work comes from people who actually care about what they're making.
+            </p>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-warm-gray/15">
+            <p class="label mb-6">Process</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div>
+                <p class="font-display font-bold text-2xl text-copper mb-2">01</p>
+                <p class="font-display font-semibold text-sm text-obsidian mb-1">Consult</p>
+                <p class="font-body text-xs text-warm-gray leading-relaxed">
+                  We talk about what you need, how you'll use the images, and what success looks like.
+                </p>
+              </div>
+              <div>
+                <p class="font-display font-bold text-2xl text-copper mb-2">02</p>
+                <p class="font-display font-semibold text-sm text-obsidian mb-1">Shoot</p>
+                <p class="font-body text-xs text-warm-gray leading-relaxed">
+                  I show up prepared with a shot list and execute efficiently. No wasted time.
+                </p>
+              </div>
+              <div>
+                <p class="font-display font-bold text-2xl text-copper mb-2">03</p>
+                <p class="font-display font-semibold text-sm text-obsidian mb-1">Deliver</p>
+                <p class="font-body text-xs text-warm-gray leading-relaxed">
+                  You review proofs, approve selections, and receive fully edited, ready-to-use files.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <a href="/contact" class="btn-primary">Work with me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

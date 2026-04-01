@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  description?: string;
+  features?: string[];
+  highlighted?: boolean;
+  cta?: string;
+}
+
+const { title, price, description, features = [], highlighted = false, cta = 'Book Now' } = Astro.props;
+---
+
+<div class:list={[
+  'p-8 lg:p-10 flex flex-col',
+  highlighted ? 'bg-obsidian text-bone' : 'bg-white border border-warm-gray/20',
+]}>
+  <span class:list={['label mb-4', highlighted ? 'text-copper' : '']}>
+    {title}
+  </span>
+  <p class:list={[
+    'font-display font-bold text-3xl mb-4',
+    highlighted ? 'text-bone' : 'text-obsidian',
+  ]}>
+    {price}
+  </p>
+  {description && (
+    <p class:list={[
+      'font-body text-sm leading-relaxed mb-6',
+      highlighted ? 'text-bone/70' : 'text-warm-gray',
+    ]}>
+      {description}
+    </p>
+  )}
+  {features.length > 0 && (
+    <ul class="flex-1 mb-8 space-y-3">
+      {features.map((feature) => (
+        <li class="flex items-start gap-3">
+          <span class:list={['mt-1 w-1.5 h-1.5 rounded-full shrink-0', highlighted ? 'bg-copper' : 'bg-copper']}>
+          </span>
+          <span class:list={[
+            'font-body text-sm',
+            highlighted ? 'text-bone/80' : 'text-slate',
+          ]}>
+            {feature}
+          </span>
+        </li>
+      ))}
+    </ul>
+  )}
+  <a
+    href="/contact"
+    class:list={[
+      'text-center py-3 px-6 font-body font-medium text-sm tracking-wide transition-colors duration-200',
+      highlighted
+        ? 'bg-copper text-bone hover:bg-copper/90'
+        : 'bg-obsidian text-bone hover:bg-slate',
+    ]}
+  >
+    {cta}
+  </a>
+</div>

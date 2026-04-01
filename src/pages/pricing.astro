@@ -1,0 +1,126 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PricingCard from '@/components/PricingCard.astro';
+
+// Placeholder data until Sanity is connected
+const packages = [
+  {
+    title: 'Essential',
+    price: '$500',
+    description: 'Perfect for small menus, single product lines, or individual headshots.',
+    features: [
+      'Up to 15 final edited images',
+      '2-hour session',
+      'Basic retouching and color grading',
+      'High-resolution digital delivery',
+      'Commercial usage rights',
+    ],
+    highlighted: false,
+    cta: 'Book Essential',
+  },
+  {
+    title: 'Professional',
+    price: '$1,200',
+    description: 'Full-service shoots for restaurants, brands, and businesses that need range.',
+    features: [
+      'Up to 40 final edited images',
+      'Half-day session (4 hours)',
+      'Advanced retouching and compositing',
+      'Client proofing portal access',
+      'Commercial usage rights',
+      'Two rounds of revisions',
+    ],
+    highlighted: true,
+    cta: 'Book Professional',
+  },
+  {
+    title: 'Premium',
+    price: 'Custom',
+    description: 'Large-scale projects, multi-day shoots, or ongoing retainer work.',
+    features: [
+      'Unlimited final images',
+      'Full-day or multi-day sessions',
+      'Art direction and styling support',
+      'Priority scheduling',
+      'Commercial usage rights',
+      'Dedicated project management',
+    ],
+    highlighted: false,
+    cta: 'Get a Quote',
+  },
+];
+---
+
+<BaseLayout
+  title="Pricing"
+  description="Photography packages and pricing for commercial, menu, product, and portrait photography in Houston, Texas."
+>
+  <section class="section-padding">
+    <div class="container-wide">
+      <div class="text-center mb-16">
+        <p class="label text-copper mb-3">Pricing</p>
+        <h1 class="heading-1 mb-4">Packages</h1>
+        <p class="body-large text-warm-gray max-w-xl mx-auto">
+          Straightforward pricing for quality work. Every package includes commercial usage rights.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        {packages.map((pkg) => (
+          <PricingCard
+            title={pkg.title}
+            price={pkg.price}
+            description={pkg.description}
+            features={pkg.features}
+            highlighted={pkg.highlighted}
+            cta={pkg.cta}
+          />
+        ))}
+      </div>
+
+      <div class="mt-16 text-center">
+        <p class="font-body text-sm text-warm-gray mb-2">
+          Not sure which package fits? No problem.
+        </p>
+        <a href="/contact" class="font-body text-sm text-copper hover:text-obsidian font-medium">
+          Let's talk about your project &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding bg-obsidian">
+    <div class="container-narrow">
+      <p class="label text-copper mb-3 text-center">FAQ</p>
+      <h2 class="heading-2 text-bone text-center mb-12">Common questions</h2>
+
+      <div class="space-y-8">
+        <div>
+          <h3 class="font-display font-semibold text-bone mb-2">What's included in "final edited images"?</h3>
+          <p class="font-body text-sm text-bone/70 leading-relaxed">
+            Every delivered image goes through my full editing pipeline: exposure correction, white balance, color grading, retouching, and composition refinement. These are print-ready, commercial-grade files.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-bone mb-2">Do you provide raw files?</h3>
+          <p class="font-body text-sm text-bone/70 leading-relaxed">
+            Raw files are not included in standard packages. The delivered images are the finished product -- fully edited and ready for use. Raw file delivery can be arranged for an additional fee.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-bone mb-2">How does the proofing process work?</h3>
+          <p class="font-body text-sm text-bone/70 leading-relaxed">
+            After the shoot, you'll receive access to a proofing gallery where you can review base-edited images, approve your selections, and flag any that need reshooting. Once approved, I apply the full editing treatment.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-bone mb-2">What are your payment terms?</h3>
+          <p class="font-body text-sm text-bone/70 leading-relaxed">
+            A 50% deposit is required to secure your booking. The remaining balance is due upon delivery of the final images. I accept all major payment methods through my booking system.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

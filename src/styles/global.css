@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ============================================
+   THEME — Brand tokens (replaces tailwind.config.mjs)
+   Tailwind v4 uses CSS-based configuration.
+   ============================================ */
+@theme {
+  /* Brand Colors */
+  --color-obsidian: #1C1C1E;
+  --color-bone: #F3EDE7;
+  --color-copper: #C0785A;
+  --color-warm-gray: #8C857E;
+  --color-slate: #4A4F54;
+  --color-deep-sage: #3A4A3F;
+
+  /* Font Families */
+  --font-display: 'Instrument Sans', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Extended Font Sizes */
+  --font-size-7xl: 4.5rem;
+  --font-size-7xl--line-height: 1.1;
+  --font-size-8xl: 6rem;
+  --font-size-8xl--line-height: 1.05;
+
+  /* Extended Spacing */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+}
+
+/* ============================================
+   BASE — Fonts loaded via Google Fonts CDN
+   ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bone text-slate font-body;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-obsidian;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-copper/20 text-obsidian;
+  }
+}
+
+/* ============================================
+   COMPONENTS — Reusable utility classes
+   ============================================ */
+@layer components {
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  .heading-1 {
+    @apply font-display font-bold text-4xl md:text-5xl lg:text-7xl tracking-tight;
+  }
+
+  .heading-2 {
+    @apply font-display font-semibold text-3xl md:text-4xl tracking-tight;
+  }
+
+  .heading-3 {
+    @apply font-display font-semibold text-xl md:text-2xl;
+  }
+
+  .body-large {
+    @apply font-body text-lg md:text-xl leading-relaxed;
+  }
+
+  .label {
+    @apply font-mono text-xs uppercase tracking-[0.15em] text-warm-gray;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 bg-obsidian text-bone font-body font-medium text-sm tracking-wide hover:bg-slate transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-6 py-3 border border-obsidian text-obsidian font-body font-medium text-sm tracking-wide hover:bg-obsidian hover:text-bone transition-colors duration-200;
+  }
+
+  .copper-accent {
+    @apply text-copper;
+  }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+@utility text-balance {
+  text-wrap: balance;
+}
