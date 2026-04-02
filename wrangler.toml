@@ -1,0 +1,8 @@
+name = "mgp-site"
+compatibility_date = "2025-04-01"
+
+# D1 Database binding
+[[ d1_databases ]]
+binding = "DB"
+database_name = "mgp-bookings"
+database_id = "11f61f68-a11b-47f7-a28d-9554b6073b88"
