@@ -6,3 +6,18 @@ compatibility_date = "2025-04-01"
 binding = "DB"
 database_name = "mgp-bookings"
 database_id = "11f61f68-a11b-47f7-a28d-9554b6073b88"
+
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1
