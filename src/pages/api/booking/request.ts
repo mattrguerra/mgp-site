@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
-import { getAvailableSlots } from '@/lib/booking-rules';
+import { createGCalClient } from '@/lib/gcal';
 
 export const prerender = false;
 
@@ -64,25 +64,40 @@ export const POST: APIRoute = async ({ request }) => {
   // Generate booking ID
   const id = crypto.randomUUID();
 
-  // TODO: Create Google Calendar event (Session 2)
+  // Create Google Calendar hold event
+  let gcalEventId: string | null = null;
+  try {
+    const gcal = createGCalClient(env as any);
+    gcalEventId = await gcal.createBookingEvent({
+      date,
+      startTime,
+      endTime,
+      clientName,
+      sessionType: sessionType.name as string,
+      clientEmail,
+      description,
+    });
+  } catch (err) {
+    // Log but don't block the booking — GCal is nice-to-have
+    console.error('GCal event creation failed:', err);
+  }
 
   // Save to D1
   await db.prepare(
     `INSERT INTO bookings (id, session_type_id, client_name, client_email,
-     client_phone, business_name, description, date, start_time, end_time)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+     client_phone, business_name, description, date, start_time, end_time, gcal_event_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).bind(
     id, sessionTypeId, clientName, clientEmail,
     clientPhone || null, businessName || null,
-    description || null, date, startTime, endTime
+    description || null, date, startTime, endTime,
+    gcalEventId
   ).run();
-
-  // TODO: Send notification email (Session 4)
 
   return new Response(JSON.stringify({
     success: true,
     bookingId: id,
-    message: 'Booking request submitted. You will receive a confirmation email.',
+    message: 'Booking request submitted. You will receive a confirmation email shortly.',
   }), {
     status: 201,
     headers: { 'Content-Type': 'application/json' },

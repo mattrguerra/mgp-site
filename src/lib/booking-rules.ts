@@ -24,7 +24,7 @@ export function getBookableDates(year: number, month: number): string[] {
 
 
     // Must be a weekday and at least MIN_ADVANCE_DAYS away
-    if (AVAILABLE_DAYS.includes(dayOfWeek) && date >= minDate) {
+    if ((AVAILABLE_DAYS as readonly number[]).includes(dayOfWeek) && date >= minDate) {
       dates.push(date.toISOString().split('T')[0]);
     }
   }

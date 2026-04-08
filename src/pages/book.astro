@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BookingApp from '@/components/booking/BookingApp';
+---
+
+<BaseLayout
+  title="Book a Session"
+  description="Schedule a photography session with Matt Guerra. Menu photography, product photography, headshots, events, and custom sessions in Houston, Texas."
+>
+  <section class="section-padding">
+    <div class="container-narrow">
+      <div class="text-center mb-16">
+        <p class="label mb-4">Book a Session</p>
+        <h1 class="heading-1 mb-6">Let's make something.</h1>
+        <p class="body-large text-warm-gray max-w-xl mx-auto">
+          Pick a session type, choose a date, and tell me what you're working on. I'll follow up within 24 hours.
+        </p>
+      </div>
+
+      <BookingApp client:load />
+    </div>
+  </section>
+</BaseLayout>
